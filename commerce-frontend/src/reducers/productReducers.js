@@ -2,6 +2,9 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_FAILED,
+  PRODUCT_DETAILS_REQUEST,
+  PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_FAILED,
 } from "../constants/productConstants";
 
 //Handle the state for the product list
@@ -23,6 +26,25 @@ export const productListReducer = (state = { products: [] }, action) => {
       // Set loading to false since request is fulfilled, send back payload of products
       return { loading: false, products: action.payload };
     case PRODUCT_LIST_FAILED:
+      // Set loading to false since request failed, send back error payload
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productDetailsReducer = (
+  state = { product: { reviews: [] } },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_DETAILS_REQUEST:
+      // Set loading to true so that the component knows about pending request retrieval
+      return { loading: true, ...state };
+    case PRODUCT_DETAILS_SUCCESS:
+      // Set loading to false since request is fulfilled, send back payload of products
+      return { loading: false, product: action.payload };
+    case PRODUCT_DETAILS_FAILED:
       // Set loading to false since request failed, send back error payload
       return { loading: false, error: action.payload };
     default:

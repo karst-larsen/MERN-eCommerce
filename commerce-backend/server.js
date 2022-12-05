@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import products from "./data/products.js";
 import cors from "cors";
+import productRoutes from "./routes/productRoute.js";
 
 const app = express();
 dotenv.config();
@@ -15,16 +15,7 @@ app.get("/", (req, res) => {
   res.send("API is running!");
 });
 
-app.get("/api/products", (req, res) => {
-  res.json(products);
-});
-
-app.get("/api/products/:id", (req, res) => {
-  const idToFind = req.params.id;
-
-  const product = products.find((product) => product._id === idToFind);
-  res.json(product);
-});
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
   console.log(

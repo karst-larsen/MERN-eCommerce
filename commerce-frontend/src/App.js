@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomeScreen from "./components/HomeScreen/HomeScreen";
 import ProductScreen from "./components/ProductScreen/ProductScreen.js";
+import CartScreen from "./components/CartScreen/CartScreen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -14,6 +15,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
+            <Route path="/cart" element={<CartScreen />}>
+              <Route path=":id" element={<CartScreen />} />
+            </Route>
           </Routes>
         </Container>
       </main>

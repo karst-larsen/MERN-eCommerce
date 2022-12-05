@@ -8,7 +8,9 @@
     "start": "node commerce-backend/server",
     "server": "nodemon commerce-backend/server",
     "client": "npm start --prefix commerce-frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node commerce-backend/seeder",
+    "data:destroy": "node commerce-backend/seeder -d"
   },
   "author": "",
   "license": "ISC",

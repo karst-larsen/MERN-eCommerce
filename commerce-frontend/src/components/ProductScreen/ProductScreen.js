@@ -16,7 +16,7 @@ import Loader from "../Loader/Loader";
 import Message from "../Message/Message";
 
 const ProductScreen = () => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();

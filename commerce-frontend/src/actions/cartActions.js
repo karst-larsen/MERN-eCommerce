@@ -7,7 +7,7 @@ import { CART_ADD_ITEM } from "../constants/cartConstants";
  * used on the cart page (including quantity, which will be passed
  * in from params)
  */
-export const cardItems = (id, quantity) => async (dispatch, getState) => {
+export const addToCart = (id, quantity) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${id}`);
 
   dispatch({

@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import Message from "../Message/Message";
 import Loader from "../Loader/Loader";
-import { addToCart } from "../../actions/cartActions";
+import { addToCart, removeFromCart } from "../../actions/cartActions";
 import { useParams, useSearchParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 /**
@@ -40,7 +40,7 @@ const CartScreen = () => {
   }, [dispatch, id]);
 
   const removeFromCartHandler = (id) => {
-    console.log("remove");
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {

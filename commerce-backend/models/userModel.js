@@ -38,7 +38,6 @@ userSchema.pre("save", async function (next) {
 
   // Initially plain text password, but now hashed, with salt as the second argument
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
 userSchema.methods.matchPassword = async function (enteredPassword) {

@@ -4,10 +4,13 @@ import connectDB from "./config/db.js";
 import cors from "cors";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import productRoutes from "./routes/productRoute.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
-dotenv.config();
+app.use(express.json());
 app.use(cors());
+
+dotenv.config();
 connectDB();
 
 app.get("/", (req, res) => {
@@ -15,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 // Error handlers should be below routes or it'll automatically throw errors
 app.use(notFound);

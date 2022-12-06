@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 
 //Setting default color value with defaultProps at the bottom of the component
 const Rating = ({ value, text, color }) => {
-  if (!value) return <h1>Loading...</h1>;
   return (
     <div className="rating">
       <span>
@@ -69,7 +68,6 @@ Rating.defaultProps = {
 
 //Type checking values that are passed into Rating
 Rating.propTypes = {
-  value: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
 };

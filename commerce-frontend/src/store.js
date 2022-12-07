@@ -28,7 +28,7 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 // Set cart items to the ternary localStorage retrieval
 const initialState = {
   cart: { cartItems: cartItemsFromStorage },
-  user: { userInfo: userInfoFromStorage },
+  userLogin: { userInfo: userInfoFromStorage },
 };
 
 const middleware = [thunk];

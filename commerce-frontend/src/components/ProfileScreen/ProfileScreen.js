@@ -13,10 +13,6 @@ const ProfileScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
 
-  const [searchParams] = useSearchParams();
-  const redirect = searchParams.get("redirect")
-    ? searchParams.get("redirect")
-    : "/";
   const navigate = useNavigate();
 
   const dispatch = useDispatch();

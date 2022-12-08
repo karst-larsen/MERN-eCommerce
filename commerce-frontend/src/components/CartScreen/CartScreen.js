@@ -28,6 +28,8 @@ const CartScreen = () => {
     ? Number(searchParams.get("quantity"))
     : 1;
 
+  const login = searchParams.get("login") ? searchParams.get("login") : "/";
+
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);

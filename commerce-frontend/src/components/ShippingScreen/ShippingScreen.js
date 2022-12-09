@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../FormContainer/FormContainer";
 import { saveShippingAddress } from "../../actions/cartActions";
+import CheckoutSteps from "../CheckoutSteps/CheckoutSteps";
 
 const ShippingScreen = () => {
   const navigate = useNavigate();
@@ -18,12 +19,12 @@ const ShippingScreen = () => {
   const dispatch = useDispatch();
 
   const submitHandler = () => {
-    console.log("Submitted");
     dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
   };
   return (
     <FormContainer>
+      <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address">

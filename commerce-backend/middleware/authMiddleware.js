@@ -17,7 +17,9 @@ const protect = asyncHandler(async (req, res, next) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       /*Using the MongoDB model and the decoded token, find the user that matches the token to the id in the token
-       *select NOT the password
+       *select NOT the password.
+       *This is a middleware, so nothing has to be sent back necessarily, we're just updating the req.user info
+       *that is being sent back
        */
       req.user = await User.findById(decoded.id).select("-password");
     } catch (error) {

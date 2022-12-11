@@ -13,7 +13,10 @@ import {
   userRegisterReducer,
   userUpdateProfileReducer,
 } from "./reducers/userReducers";
-import { orderCreateReducer } from "./reducers/orderReducers";
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+} from "./reducers/orderReducers";
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -24,6 +27,7 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
 });
 
 // Local Storage to get cart if it's stored, otherwise value is an empty array
@@ -39,10 +43,6 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
   ? JSON.parse(localStorage.getItem("shippingAddress"))
   : {};
-
-// const paymentMethodFromStorage = localStorage.getItem("paymentMethod")
-//   ? JSON.parse(localStorage.getItem("paymentMethod"))
-//   : "";
 
 // Set cart items to the ternary localStorage retrieval
 const initialState = {

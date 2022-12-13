@@ -89,7 +89,6 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
 export const payOrder =
   (orderId, paymentResult) => async (dispatch, getState) => {
     try {
-      // Initialize the order details reducer with the request dispatch
       dispatch({ type: ORDER_PAY_REQUEST });
 
       // Get the user information from state to grab JWT
@@ -97,7 +96,6 @@ export const payOrder =
         userLogin: { userInfo },
       } = getState();
 
-      // Set up config for GET request
       const config = {
         headers: {
           "Content-Type": "application/json",

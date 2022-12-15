@@ -14,6 +14,7 @@ import {
   userLoginReducer,
   userRegisterReducer,
   userUpdateProfileReducer,
+  userUpdateReducer,
 } from "./reducers/userReducers";
 import {
   orderCreateReducer,
@@ -36,6 +37,7 @@ const reducer = combineReducers({
   orderListMy: orderListMyReducer,
   userList: userListReducer,
   userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
 });
 
 // Local Storage to get cart if it's stored, otherwise value is an empty array

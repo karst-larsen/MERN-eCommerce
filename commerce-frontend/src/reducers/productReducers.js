@@ -8,6 +8,10 @@ import {
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_SUCCESS,
   PRODUCT_DELETE_FAILED,
+  PRODUCT_CREATE_REQUEST,
+  PRODUCT_CREATE_SUCCESS,
+  PRODUCT_CREATE_FAILED,
+  PRODUCT_CREATE_RESET,
 } from "../constants/productConstants";
 
 //Handle the state for the product list
@@ -66,6 +70,24 @@ export const productDeleteReducer = (state = {}, action) => {
     case PRODUCT_DELETE_FAILED:
       // Set loading to false since request failed, send back error payload
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_CREATE_REQUEST:
+      // Set loading to true so that the component knows about pending request retrieval
+      return { loading: true };
+    case PRODUCT_CREATE_SUCCESS:
+      // Set loading to false since request is fulfilled, send back payload of products
+      return { loading: false, success: true, product: action.payload };
+    case PRODUCT_CREATE_FAILED:
+      // Set loading to false since request failed, send back error payload
+      return { loading: false, error: action.payload };
+    case PRODUCT_CREATE_RESET:
+      return {};
     default:
       return state;
   }

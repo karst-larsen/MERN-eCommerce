@@ -31,13 +31,13 @@ function checkFileType(file, cb) {
   if (extname && mimetype) {
     return cb(null, true);
   } else {
-    return cb("Upload must be an image");
+    cb("Upload must be an image");
   }
 }
 
 // Middleware that stores file that was uploaded, with checkFileType function for type check
 const upload = multer({
-  storage,
+  storage: storage,
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },

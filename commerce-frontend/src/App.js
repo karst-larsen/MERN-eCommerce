@@ -16,6 +16,7 @@ import UserListScreen from "./components/UserListScreen/UserListScreen";
 import UserEditScreen from "./components/UserEditScreen/UserEditScreen";
 import ProductListScreen from "./components/ProductListScreen/ProductListScreen";
 import ProductEditScreen from "./components/ProductEditScreen/ProductEditScreen";
+import OrderListScreen from "./components/OrderListScreen/OrderListScreen";
 
 const App = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
               path="/admin/product/:productId/edit"
               element={<ProductEditScreen />}
             />
+            <Route path="/admin/orderlist" element={<OrderListScreen />} />
           </Routes>
         </Container>
       </main>

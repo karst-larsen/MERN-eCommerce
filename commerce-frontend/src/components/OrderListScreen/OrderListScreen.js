@@ -60,14 +60,16 @@ const OrderListScreen = () => {
                   )}
                 </td>
                 <td>
+                  {/* Issue: deliveredAt is not being retrieved, and is returning undefined */}
+
                   {order.isDelivered ? (
-                    order.deliveredAt.substring(0, 10)
+                    order.deliveredAt
                   ) : (
                     <i className="fas fa-times" style={{ color: "red" }}></i>
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/admin/order/${order._id}/edit`}>
+                  <LinkContainer to={`/orders/${order._id}`}>
                     <Button variant="light" className="btn-sm">
                       Details
                     </Button>

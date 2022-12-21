@@ -1,4 +1,5 @@
 import asyncHandler from "express-async-handler";
+import products from "../data/products.js";
 import Product from "../models/productModel.js";
 
 // @desc Fetch all products
@@ -82,14 +83,57 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.brand = brand;
     product.category = category;
     product.countInStock = countInStock;
+
+    const updatedProduct = await product.save();
+    res.json(updatedProduct);
   } else {
     res.status(404);
     throw new Error("Product not found");
   }
+});
 
-  const updatedProduct = await product.save();
+/**
+ * Create new review
+ * POST /api/products/:id/reviews
+ * Private
+ */
 
-  res.json(updatedProduct);
+const createProductReview = asyncHandler(async (req, res) => {
+  const { rating, comment } = req.body;
+
+  const product = await Product.findById(req.params.id);
+
+  if (product) {
+    const alreadyReviewed = product.reviews.find(
+      (review) => review.user.toString() === req.user._id.toString()
+    );
+
+    if (alreadyReviewed) {
+      res.status(400);
+      throw new Error("Product already reviewed");
+    }
+
+    const review = {
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+      user: req.user._id,
+    };
+
+    product.reviews.push(review);
+
+    product.numReviews = product.reviews.length;
+
+    product.rating =
+      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      product.reviews.length;
+
+    await product.save();
+    res.status(201).json({ message: "Review Added" });
+  } else {
+    res.status(404);
+    throw new Error("Product not found");
+  }
 });
 
 export {
@@ -98,4 +142,5 @@ export {
   deleteProduct,
   createProduct,
   updateProduct,
+  createProductReview,
 };

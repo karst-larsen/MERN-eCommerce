@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../../actions/productActions";
 import Loader from "../Loader/Loader";
 import Message from "../Message/Message";
+import { addToCart } from "../../actions/cartActions";
 
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(1);
@@ -28,6 +29,7 @@ const ProductScreen = () => {
   }, [dispatch, id]);
 
   const addToCartHandler = () => {
+    dispatch(addToCart(product._id, quantity));
     navigate(`/cart/${id}?quantity=${quantity}`);
   };
 

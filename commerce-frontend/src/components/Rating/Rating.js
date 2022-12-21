@@ -68,7 +68,7 @@ Rating.defaultProps = {
 
 //Type checking values that are passed into Rating
 Rating.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   color: PropTypes.string,
 };
 

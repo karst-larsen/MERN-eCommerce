@@ -23,13 +23,15 @@ import {
 
 //Similar to an axios request, functions that do something with the reducers (which are switched by case from the constants passed in)
 export const listProducts =
-  (keyword = "") =>
+  (keyword = "", pageNumber = "") =>
   async (dispatch) => {
     try {
       //Receive the request
       dispatch({ type: PRODUCT_LIST_REQUEST });
 
-      const { data } = await axios.get(`/api/products?keyword=${keyword}`);
+      const { data } = await axios.get(
+        `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      );
 
       //Send back the action payload upon successful retrieval
       dispatch({

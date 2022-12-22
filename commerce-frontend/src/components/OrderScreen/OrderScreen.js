@@ -10,7 +10,7 @@ import {
   deliverOrder,
 } from "../../actions/orderActions";
 import axios from "axios";
-import { PayPalButton } from "react-paypal-button-v2";
+// import { PayPalButton } from "react-paypal-button-v2";
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
@@ -60,20 +60,20 @@ const OrderScreen = () => {
     }
 
     // Retrieve the PAYPAL_CLIENT_ID stored in route for sending to client process.env variable
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get("/api/config/paypal");
+    // const addPayPalScript = async () => {
+    //   const { data: clientId } = await axios.get("/api/config/paypal");
 
-      // Create a script with the clientId
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
+    //   // Create a script with the clientId
+    //   const script = document.createElement("script");
+    //   script.type = "text/javascript";
+    //   script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+    //   script.async = true;
+    //   script.onload = () => {
+    //     setSdkReady(true);
+    //   };
 
-      document.body.appendChild(script);
-    };
+    //   document.body.appendChild(script);
+    // };
 
     if (!order || successPay || successDeliver) {
       dispatch({ type: ORDER_PAY_RESET });
@@ -81,11 +81,11 @@ const OrderScreen = () => {
       dispatch(getOrderDetails(id));
     } else if (!order.isPaid) {
       // If the order isn't paid, and if the paypal script isn't in the window, add it
-      if (!window.paypal) {
-        addPayPalScript();
-      } else {
-        setSdkReady(true);
-      }
+      //   if (!window.paypal) {
+      //     addPayPalScript();
+      //   } else {
+      // }
+      setSdkReady(true);
     }
   }, [id, dispatch, successPay, order, successDeliver]);
 
@@ -213,10 +213,11 @@ const OrderScreen = () => {
                   {!sdkReady ? (
                     <Loader />
                   ) : (
-                    <PayPalButton
-                      amount={order.totalPrice}
-                      onSuccess={successPaymentHandler}
-                    />
+                    // <PayPalButton
+                    //   amount={order.totalPrice}
+                    //   onSuccess={successPaymentHandler}
+                    // />
+                    <Button variant="danger">Placeholder Paypal Button</Button>
                   )}
                 </ListGroup.Item>
               )}

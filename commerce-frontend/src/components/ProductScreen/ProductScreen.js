@@ -19,6 +19,7 @@ import Loader from "../Loader/Loader";
 import Message from "../Message/Message";
 import { addToCart } from "../../actions/cartActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../../constants/productConstants";
+import Meta from "../Meta/Meta";
 
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(1);
@@ -76,6 +77,7 @@ const ProductScreen = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />

@@ -1,8 +1,10 @@
-import Product from "../Product/Product";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { useEffect } from "react";
 import { listProducts } from "../../actions/productActions";
+import Product from "../Product/Product";
+import Meta from "../Meta/Meta";
 import Message from "../Message/Message";
 import Loader from "../Loader/Loader";
 import { useParams } from "react-router-dom";
@@ -23,7 +25,14 @@ const HomeScreen = () => {
 
   return (
     <>
-      {!keyword && <ProductCarousel />}
+      <Meta />
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-dark">
+          Back to Main
+        </Link>
+      )}
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />

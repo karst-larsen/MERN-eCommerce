@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node commerce-backend/seeder",
     "data:destroy": "node commerce-backend/seeder -d",
-    "railway:build": "npm install --prefix commerce-frontend && npm run build --prefix commerce-frontend"
+    "railway:build": "npm install --prefix ./commerce-frontend && npm run build --prefix ./commerce-frontend"
   },
   "author": "",
   "license": "ISC",

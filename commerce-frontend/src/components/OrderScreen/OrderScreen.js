@@ -9,8 +9,8 @@ import {
   payOrder,
   deliverOrder,
 } from "../../actions/orderActions";
-import axios from "axios";
 // import { PayPalButton } from "react-paypal-button-v2";
+
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,

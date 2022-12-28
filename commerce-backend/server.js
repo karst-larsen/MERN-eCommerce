@@ -35,7 +35,7 @@ app.get("/api/config/paypal", (_req, res) =>
  *  directly using it since ES6 modules doesn't support it, however path.resolve() works the same.
  */
 
-const __dirname = path.resolve();
+const __dirname = "commerce-site";
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Setting the static folder for build
